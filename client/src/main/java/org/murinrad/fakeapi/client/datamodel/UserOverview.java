@@ -5,13 +5,13 @@ import java.util.List;
 
 public class UserOverview {
 
-  private String name;
-  private String username;
-  private String email;
-  private List<Post> posts;
+  private final String name;
+  private final String username;
+  private final String email;
+  private final List<Post> posts;
 
   public UserOverview(String name, String username, String email, List<Post> posts) {
-    this.posts = new ArrayList<Post>(posts);
+    this.posts = new ArrayList<>(posts);
     this.name = name;
     this.username = username;
     this.email = email;
@@ -35,12 +35,11 @@ public class UserOverview {
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("{").append("name: ").append(getName()).append(", ")
-        .append("username: ").append(getUsername()).append(", ")
-        .append("email: ").append(getEmail()).append(", ")
-        .append("posts: ").append(getPosts().toString())
-        .append("}");
-    return sb.toString();
+    String sb = "{" + "name: " + getName() + ", "
+        + "username: " + getUsername() + ", "
+        + "email: " + getEmail() + ", "
+        + "posts: " + getPosts().toString()
+        + "}";
+    return sb;
   }
 }

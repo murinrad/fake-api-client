@@ -2,7 +2,7 @@ package org.murinrad.fakeapi.client;
 
 public class FakeApiClientException extends Exception {
 
-  private int code;
+  private final int code;
 
   public FakeApiClientException(String responseMessage, int code) {
     super(responseMessage);

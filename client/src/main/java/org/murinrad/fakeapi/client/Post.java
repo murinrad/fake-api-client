@@ -21,10 +21,9 @@ class Post {
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("{").append("id: ").append(getId()).append(", ")
-        .append("title: ").append(getTitle())
-        .append("}");
-    return sb.toString();
+    String sb = "{" + "id: " + getId() + ", "
+        + "title: " + getTitle()
+        + "}";
+    return sb;
   }
 }

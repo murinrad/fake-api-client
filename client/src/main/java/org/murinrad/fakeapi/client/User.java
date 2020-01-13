@@ -33,11 +33,10 @@ class User {
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("{").append("name: ").append(getName()).append(", ")
-        .append("username: ").append(getUsername()).append(", ")
-        .append("email: ").append(getEmail())
-        .append("}");
-    return sb.toString();
+    String sb = "{" + "name: " + getName() + ", "
+        + "username: " + getUsername() + ", "
+        + "email: " + getEmail()
+        + "}";
+    return sb;
   }
 }

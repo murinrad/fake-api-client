@@ -2,8 +2,8 @@ package org.murinrad.fakeapi.client.datamodel;
 
 public class Post {
 
-  private long id;
-  private String title;
+  private final long id;
+  private final String title;
 
   public Post(long id, String title) {
     this.id = id;
@@ -20,10 +20,9 @@ public class Post {
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("{").append("id: ").append(getId()).append(", ")
-        .append("title: ").append(getTitle())
-        .append("}");
-    return sb.toString();
+    String sb = "{" + "id: " + getId() + ", "
+        + "title: " + getTitle()
+        + "}";
+    return sb;
   }
 }
