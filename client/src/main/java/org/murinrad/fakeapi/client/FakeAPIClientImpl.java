@@ -21,13 +21,14 @@ final class FakeAPIClientImpl implements FakeAPIClient, AutoCloseable {
   private static final String USER_ENDPOINT = "/users/";
   private static final String POSTS_ENDPOINT = "/posts/";
   private static final String POSTS_BY_USER_ENDPOINT_TEMPLATE = "/posts?userId=%s";
+  private static final UrlValidator urlValidator = new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS);
   private final ObjectMapper objectMapper;
   private final OkHttpClient client;
   private final JavaType postListType;
   private final String apiHost;
 
   FakeAPIClientImpl(String apiBaseURL) {
-    if (!UrlValidator.getInstance().isValid(apiBaseURL)) {
+    if (!urlValidator.isValid(apiBaseURL)) {
       throw new IllegalArgumentException("Base URL parameter is invalid");
     }
     if (apiBaseURL.endsWith("/")) {
