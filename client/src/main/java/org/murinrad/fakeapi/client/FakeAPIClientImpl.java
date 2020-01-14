@@ -16,6 +16,9 @@ import java.util.stream.Collectors;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.murinrad.fakeapi.client.datamodel.UserOverview;
 
+/**
+ * Implementation of the fake API client
+ */
 final class FakeAPIClientImpl implements FakeAPIClient, AutoCloseable {
 
   private static final String USER_ENDPOINT = "/users/";
@@ -27,6 +30,11 @@ final class FakeAPIClientImpl implements FakeAPIClient, AutoCloseable {
   private final JavaType postListType;
   private final String apiHost;
 
+  /**
+   * Constructor for the basic client
+   * @param apiBaseURL the base URL of the service
+   * @see org.murinrad.fakeapi.client.FakeAPIClient.Factory
+   */
   FakeAPIClientImpl(String apiBaseURL) {
     if (!urlValidator.isValid(apiBaseURL)) {
       throw new IllegalArgumentException("Base URL parameter is invalid");
@@ -41,6 +49,10 @@ final class FakeAPIClientImpl implements FakeAPIClient, AutoCloseable {
     postListType = objectMapper.getTypeFactory().constructCollectionType(List.class, Post.class);
   }
 
+  /**
+   * Constructor for the client with settings to tweak parallel calls
+   * @see org.murinrad.fakeapi.client.FakeAPIClient.Factory
+   */
   FakeAPIClientImpl(String apiBaseURL, int maxRequestsPerHost, int maxRequests) {
     this(apiBaseURL);
     Dispatcher customDispatcher = new Dispatcher();
