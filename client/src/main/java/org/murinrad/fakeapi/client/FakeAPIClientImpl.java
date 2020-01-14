@@ -188,12 +188,13 @@ final class FakeAPIClientImpl implements FakeAPIClient, AutoCloseable {
     void parseResponse(Response res, Exception ex) {
       if (ex != null) {
         future.completeExceptionally(ex);
-      }
-      try {
-        checkResponseStatus(res);
-        future.complete(mappingFunction.apply(res.body().bytes()));
-      } catch (Exception e) {
-        future.completeExceptionally(e);
+      } else {
+        try {
+          checkResponseStatus(res);
+          future.complete(mappingFunction.apply(res.body().bytes()));
+        } catch (Exception e) {
+          future.completeExceptionally(e);
+        }
       }
     }
   }
