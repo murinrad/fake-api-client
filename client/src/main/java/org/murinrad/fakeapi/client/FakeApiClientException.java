@@ -13,4 +13,8 @@ public class FakeApiClientException extends Exception {
   public String toString() {
     return String.format("Response contained a failure status. Response status was : %s, message: %s", code, getMessage());
   }
+
+  public int getCode() {
+    return code;
+  }
 }
